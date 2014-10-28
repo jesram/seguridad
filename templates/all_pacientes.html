@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    {% load staticfiles %}
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Consultorio HackMe</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}"/>
+    </head>
+<body>
+        <table width="1000">
+            <thead>
+                <tr>
+                    <th colspan="8">Pacientes</th>
+                </tr>
+                <tr>
+                    <th colspan="1">  Nombres  </th>
+                    <th colspan="1"> Apellidos </th>
+                    <th colspan="1"> Direccion </th>
+                    <th colspan="1">  Cuenta   </th>
+                    <th colspan="1"> Fecha Nac </th>
+                    <th colspan="1">   Saldo   </th>
+                    <th colspan="1">           </th>
+                    <th colspan="1">           </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for px in pacientes %}
+
+                    <tr>
+                        <td>{{ px.nombres }}</td>
+                        <td>{{ px.apellidos }}</td>
+                        <td>{{ px.direccion }}</td>
+                        <td>{{ px.cuenta }}</td>
+                        <td>{{ px.fecha_nacimiento }}</td>
+                        <td>{{ px.saldo }}</td>
+                        <td><a href="{% url "editar_paciente" px.id %}" class="button">Editar</a></td>
+                        <td><a href="{% url "borrar_paciente" px.id %}" class="button">Borrar</a></td>
+                    </tr>
+                {% endfor %}
+                <th colspan="8" align="center"><a href="{% url "nuevo_px" %}" class="button">Nuevo paciente</a></th>
+            </tbody>
+        </table>
+</body>
+</html>

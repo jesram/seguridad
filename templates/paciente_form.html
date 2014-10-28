@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    {% load staticfiles %}
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Consultorio HackMe</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}"/>
+    </head>
+    <form method="post">{% csrf_token %}
+        <div class="content" align="center">
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">Nuevo Paciente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ form.as_table }}
+                    <th colspan="2" align="center"><input type="submit" value="Submit"/></th>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</html>
